@@ -7,7 +7,6 @@ class Users {
 	String email
 	Boolean isAdmin
 	String password
-  String confirmPassword
 	
 	
     static constraints = {
@@ -15,8 +14,7 @@ class Users {
 		name blank: false
 		email blank: false
 		username blank: false
-		password blank: false, nullable: false, password: true 
-    confirmPassword blank: false, nullable: false, password: true
+		password blank: false
 		isAdmin blank: false
     }
 }
