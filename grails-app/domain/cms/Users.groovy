@@ -14,7 +14,7 @@ class Users {
 		name blank: false
 		email blank: false
 		username blank: false
-		password blank: false
+		password blank: false, password: true
 		isAdmin blank: false
     }
 }
