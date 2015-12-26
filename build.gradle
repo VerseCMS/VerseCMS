@@ -57,6 +57,8 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-tomcat"
     compile "org.grails:grails-dependencies"
     compile "org.grails:grails-web-boot"
+    runtime 'postgresql:postgresql:8.4-702.jdbc3'
+    provided "org.springframework.boot:spring-boot-starter-tomcat"
 
     compile "org.grails.plugins:hibernate"
     compile "org.grails.plugins:cache"
@@ -77,3 +79,15 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+task stage() {
+    dependsOn clean, war
+}
+tasks.stage.doLast() {
+    delete fileTree(dir: "build/distributions")
+    delete fileTree(dir: "build/assetCompile")
+    delete fileTree(dir: "build/distributions")
+    delete fileTree(dir: "build/libs", exclude: "*.war")
+}
+war.mustRunAfter clean
+
